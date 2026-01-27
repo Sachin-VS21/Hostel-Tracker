@@ -1,0 +1,106 @@
+You are a senior frontend engineer and UI/UX designer.
+
+Design and generate the FRONTEND ONLY for a "Smart Hostel Issue Tracking System".
+Do NOT include backend logic or database code. Assume APIs already exist.
+
+TECH STACK:
+- React.js (or Next.js)
+- Tailwind CSS
+- Modern, clean, responsive UI
+- Component-based architecture
+
+TARGET USERS:
+1. Students
+2. Hostel Management / Admin
+
+AUTH & ROLE UI:
+- Login & Register pages
+- Role-based UI rendering (Student vs Management)
+- Clean authentication screens with hostel-themed visuals
+
+STUDENT DASHBOARD UI:
+- Overview cards:
+  - Total issues reported
+  - Issues in progress
+  - Resolved issues
+- Button to "Report New Issue"
+
+ISSUE REPORTING FORM UI:
+- Category dropdown (Plumbing, Electrical, Cleanliness, Internet, Furniture, Others)
+- Priority selector (Low, Medium, High, Emergency)
+- Description textarea
+- Media upload (image/video preview UI)
+- Visibility toggle (Public / Private)
+- Auto-filled Hostel / Block / Room (read-only fields)
+- Submit button with loading state
+
+ISSUE LIST & TRACKING UI:
+- Issue cards with:
+  - Category icon
+  - Priority badge color-coded
+  - Status timeline indicator
+  - Submitted date
+- Filters:
+  - Category
+  - Priority
+  - Status
+- Search bar
+- Issue detail page with:
+  - Full description
+  - Media gallery
+  - Status progress bar
+  - Comments section (public issues only)
+
+COMMUNITY INTERACTION UI:
+- Comment threads with replies
+- Reaction buttons (👍 ⚠️ 🔥)
+- Clean discussion layout
+
+ANNOUNCEMENTS UI:
+- Announcement feed with:
+  - Title
+  - Date
+  - Target hostel/block tag
+- Highlight urgent announcements
+- Minimal but noticeable alert design
+
+LOST & FOUND UI:
+- Tabs: Lost | Found | Claimed
+- Item cards with image, description, date, location
+- Claim request button
+- Status badges
+
+MANAGEMENT DASHBOARD UI:
+- Admin overview cards:
+  - Total issues
+  - Pending issues
+  - Average resolution time
+- Issue assignment modal
+- Status update dropdown
+- Remarks input section
+
+ANALYTICS UI (FRONTEND ONLY):
+- Charts placeholders:
+  - Issue category frequency
+  - Hostel/block-wise issue density
+  - Pending vs resolved
+- Dashboard layout using cards and charts (mock data)
+
+GENERAL UI/UX REQUIREMENTS:
+- Mobile-first responsive design
+- Consistent color palette (hostel-friendly, calm)
+- Icons for categories & status
+- Loading skeletons
+- Empty states
+- Toast notifications
+- Accessible (ARIA-friendly)
+
+DELIVERABLE:
+- Folder structure
+- Reusable components
+- Pages/screens
+- Tailwind-styled JSX
+- Mock/static data where needed
+- NO backend, NO API implementation
+
+Focus on usability, clarity, and professional hostel management aesthetics.
