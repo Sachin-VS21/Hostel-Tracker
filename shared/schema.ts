@@ -1,20 +1,20 @@
-import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizzle-orm/pg-core";
+import { sqliteTable, text, integer, real } from "drizzle-orm/sqlite-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
-export const users = pgTable("users", {
-  id: serial("id").primaryKey(),
+export const users = sqliteTable("users", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   username: text("username").notNull().unique(),
   password: text("password").notNull(),
   role: text("role").notNull().default("student"), // 'student' | 'admin'
   name: text("name").notNull(),
   hostel: text("hostel"),
   room: text("room"),
-  createdAt: timestamp("created_at").defaultNow(),
+  createdAt: text("created_at").default(new Date().toISOString()),
 });
 
-export const issues = pgTable("issues", {
-  id: serial("id").primaryKey(),
+export const issues = sqliteTable("issues", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   description: text("description").notNull(),
   category: text("category").notNull(), // 'Plumbing', 'Electrical', 'Cleanliness', 'Internet', 'Furniture', 'Others'
@@ -24,30 +24,30 @@ export const issues = pgTable("issues", {
   mediaUrl: text("media_url"),
   location: text("location"), // "Hostel A - Room 101"
   reporterId: integer("reporter_id").notNull(), // Foreign key to users.id logic
-  createdAt: timestamp("created_at").defaultNow(),
-  updatedAt: timestamp("updated_at").defaultNow(),
+  createdAt: text("created_at").default(new Date().toISOString()),
+  updatedAt: text("updated_at").default(new Date().toISOString()),
 });
 
-export const comments = pgTable("comments", {
-  id: serial("id").primaryKey(),
+export const comments = sqliteTable("comments", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   issueId: integer("issue_id").notNull(),
   userId: integer("user_id").notNull(),
   content: text("content").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
+  createdAt: text("created_at").default(new Date().toISOString()),
 });
 
-export const announcements = pgTable("announcements", {
-  id: serial("id").primaryKey(),
+export const announcements = sqliteTable("announcements", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   content: text("content").notNull(),
   target: text("target"), // "Hostel A", "All"
   authorId: integer("author_id").notNull(),
-  createdAt: timestamp("created_at").defaultNow(),
-  urgent: boolean("urgent").default(false),
+  createdAt: text("created_at").default(new Date().toISOString()),
+  urgent: integer("urgent").default(0),
 });
 
-export const lostFound = pgTable("lost_found", {
-  id: serial("id").primaryKey(),
+export const lostFound = sqliteTable("lost_found", {
+  id: integer("id").primaryKey({ autoIncrement: true }),
   title: text("title").notNull(),
   description: text("description").notNull(),
   type: text("type").notNull(), // 'Lost' | 'Found'
@@ -55,7 +55,7 @@ export const lostFound = pgTable("lost_found", {
   location: text("location"),
   imageUrl: text("image_url"),
   contact: text("contact"),
-  createdAt: timestamp("created_at").defaultNow(),
+  createdAt: text("created_at").default(new Date().toISOString()),
 });
 
 // Schemas

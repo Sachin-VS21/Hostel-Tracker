@@ -2,10 +2,27 @@ import { users, issues, comments, announcements, lostFound, type User, type Inse
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
 import session from "express-session";
-import connectPg from "connect-pg-simple";
-import { pool } from "./db";
 
-const PostgresSessionStore = connectPg(session);
+// Using memory store for development
+export class MemorySessionStore extends session.Store {
+  private sessions: Map<string, any> = new Map();
+
+  get(sid: string, callback: (err: any, session?: any) => void) {
+    process.nextTick(() => {
+      callback(null, this.sessions.get(sid));
+    });
+  }
+
+  set(sid: string, sess: any, callback?: (err?: any) => void) {
+    this.sessions.set(sid, sess);
+    if (callback) process.nextTick(callback);
+  }
+
+  destroy(sid: string, callback?: (err?: any) => void) {
+    this.sessions.delete(sid);
+    if (callback) process.nextTick(callback);
+  }
+}
 
 export interface IStorage {
   getUser(id: number): Promise<User | undefined>;
@@ -34,10 +51,7 @@ export class DatabaseStorage implements IStorage {
   sessionStore: session.Store;
 
   constructor() {
-    this.sessionStore = new PostgresSessionStore({
-      pool,
-      createTableIfMissing: true,
-    });
+    this.sessionStore = new MemorySessionStore();
   }
 
   async getUser(id: number): Promise<User | undefined> {

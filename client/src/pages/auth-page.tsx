@@ -53,7 +53,7 @@ export default function AuthPage() {
           {/* modern abstract building architecture */}
           <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 mt-8 border border-white/20">
              <img 
-               src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
+               src="C:\Users\Admin\Downloads\Hostel-Issue-Tracker\Hostel-Issue-Tracker\client\public\Hostel.jpeg" 
                alt="Modern Building"
                className="w-full h-full object-cover"
              />
