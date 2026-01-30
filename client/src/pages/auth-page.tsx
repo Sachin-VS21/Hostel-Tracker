@@ -53,8 +53,10 @@ export default function AuthPage() {
           {/* modern abstract building architecture */}
           <div className="relative h-64 w-full rounded-2xl overflow-hidden shadow-2xl shadow-primary/20 mt-8 border border-white/20">
              <img 
-               src="C:\Users\Admin\Downloads\Hostel-Issue-Tracker\Hostel-Issue-Tracker\client\public\Hostel.jpeg" 
-               alt="Modern Building"
+               src="/Hostel.jpeg" 
+               alt="Hostel Building"
+               loading="lazy"
+               decoding="async"
                className="w-full h-full object-cover"
              />
              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex items-end p-6">
